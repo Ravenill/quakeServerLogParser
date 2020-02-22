@@ -1,0 +1,14 @@
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/QuakeStatsMainApp.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/enchancer/BestPlayerKillerAndVictim.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/enchancer/RoundQuakeStatsProcessor.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/model/GameStats.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/QuakeStatsService.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/enchancer/EndCauseProcessor.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/printer/Persister.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/enchancer/StatsGenerator.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/model/RoundStats.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/enchancer/MainTableProcessor.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/helper/Helper.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/enchancer/GameQuakeStatsProcessor.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/model/PlayerStats.java
+/home/ktarczewski/project/private/quakeStats/src/main/java/com/kruczek/parser/QuakeLogsStatsParser.java
