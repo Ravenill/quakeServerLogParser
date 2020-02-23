@@ -131,4 +131,5 @@ buildNumber.properties
 # End of https://www.gitignore.io/api/java,maven,intellij
 
 # stats log
-quakeStatsLog.tmp
+quakeServerLog.tmp
+install.sh
