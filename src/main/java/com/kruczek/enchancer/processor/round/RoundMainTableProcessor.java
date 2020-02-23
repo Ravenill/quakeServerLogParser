@@ -1,4 +1,4 @@
-package com.kruczek.enchancer;
+package com.kruczek.enchancer.processor.round;
 
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -12,10 +12,10 @@ import com.kruczek.model.RoundStats;
 
 import static java.util.stream.Collectors.toMap;
 
-class MainTableProcessor implements RoundQuakeStatsProcessor {
+public class RoundMainTableProcessor implements RoundQuakeStatsProcessor {
 
     @Override
-    public void process(RoundStats roundStat, StringBuilder statsToPrint) {
+    public void processAndFill(RoundStats roundStat, StringBuilder statsToPrint) {
         LinkedHashMap<Integer, Pair<String, PlayerStats>> sortedRoundMapByPointsDesc = roundStat.getPlayersStats().entrySet().stream()
                 .sorted(Comparator.comparingInt(this::compareByScoreDesc))
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));

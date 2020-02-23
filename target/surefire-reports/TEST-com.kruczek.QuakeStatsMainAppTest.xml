@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.kruczek.QuakeStatsMainAppTest" time="0.015" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.kruczek.QuakeStatsMainAppTest" time="0.014" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/home/ktarczewski/project/private/quakeStats/target/surefire/surefirebooter1807705371910793020.jar /home/ktarczewski/project/private/quakeStats/target/surefire 2020-02-20T15-17-14_350-jvmRun1 surefire430067206523951542tmp surefire_03760532140427688316tmp"/>
+    <property name="sun.java.command" value="/home/ktarczewski/project/private/quakeStats/target/surefire/surefirebooter8176424591583534438.jar /home/ktarczewski/project/private/quakeStats/target/surefire 2020-02-23T14-34-06_023-jvmRun1 surefire3446238900361521744tmp surefire_03992336789731199261tmp"/>
     <property name="surefire.test.class.path" value="/home/ktarczewski/project/private/quakeStats/target/test-classes:/home/ktarczewski/project/private/quakeStats/target/classes:/home/ktarczewski/.m2/repository/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar:/home/ktarczewski/.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar:/home/ktarczewski/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ktarczewski/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/ktarczewski"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/ktarczewski/project/private/quakeStats/target/surefire/surefirebooter1807705371910793020.jar"/>
+    <property name="surefire.real.class.path" value="/home/ktarczewski/project/private/quakeStats/target/surefire/surefirebooter8176424591583534438.jar"/>
     <property name="sun.boot.class.path" value="/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/resources.jar:/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/rt.jar:/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/jsse.jar:/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/jce.jar:/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/charsets.jar:/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/jfr.jar:/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_232-b09"/>
