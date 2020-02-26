@@ -13,6 +13,8 @@ public class PlayerStats {
     private Map<Integer, Integer> mapsOfDeaths = new HashMap<>();
     private Map<Integer, Integer> mapsOfKills = new HashMap<>();
 
+    private boolean isActive = true;
+
     public void incKills(int deadPlayerId) {
         kills++;
         points++;
@@ -51,5 +53,13 @@ public class PlayerStats {
 
     public Map<Integer, Integer> getMapsOfKills() {
         return mapsOfKills;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void deactivate() {
+        isActive = false;
     }
 }

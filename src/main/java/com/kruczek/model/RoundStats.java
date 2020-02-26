@@ -10,7 +10,19 @@ public class RoundStats {
     private String endCause = "Server timeout. END OF THE GAME";
 
     public void addPlayer(int noPlayer, String name) {
-        playersStats.putIfAbsent(noPlayer, Pair.of(name, new PlayerStats()));
+        playersStats.compute(noPlayer, (key, val) -> {
+            if (val == null) {
+                return Pair.of(name, new PlayerStats());
+            } else if (!val.getRight().isActive()) {
+                return Pair.of(name, new PlayerStats());
+            } else {
+                return val;
+            }
+        });
+    }
+
+    public void deactivatePlayer(int playerId) {
+        playersStats.get(playerId).getRight().deactivate();
     }
 
     public void registerKill(int killerId, int deadId) {

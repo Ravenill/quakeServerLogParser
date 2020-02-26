@@ -11,11 +11,11 @@ import com.kruczek.model.RoundStats;
 
 public class QuakeLogsStatsParser {
 
-    public static final String CONNECTED = "ClientUserinfoChanged:";
-    public static final String MAY_BE_CONNECTED = "Clien";
-    public static final String START = "InitG";
-    public static final String KILL = "Kill:";
-    public static final String END = "Exit:";
+    public static final String CONNECTED = "ClientUserinfoChanged";
+    public static final String DISCONNECT = "ClientDisconnect";
+    public static final String START = "InitGame";
+    public static final String KILL = "Kill";
+    public static final String END = "Exit";
 
     public GameStats parseFileToStats(File quakeLogs) {
         GameStats gameStats = new GameStats();
@@ -51,6 +51,10 @@ public class QuakeLogsStatsParser {
             case START:
                 startTurn(line, gameStats);
                 break;
+
+            case DISCONNECT:
+                parseDisconnectAction(line, gameStats);
+                break;
         }
     }
 
@@ -61,12 +65,8 @@ public class QuakeLogsStatsParser {
             return "";
         }
 
-        String action = line.substring(0, Math.min(5, lengthOfLine));
-        if (action.equals(MAY_BE_CONNECTED)) {
-            action = line.substring(0, Math.min(CONNECTED.length(), lengthOfLine));
-        }
-
-        return action;
+        String[] splitLog = line.split(":");
+        return splitLog[0];
     }
 
     //Kill: 1 0 6: UnnamedPlayer killed Zuczek_Gnojarz by MOD_ROCKET
@@ -112,5 +112,12 @@ public class QuakeLogsStatsParser {
     //InitGame: \fs_cdn\content.quakejs.com\fs_manifest\linuxq3ademo-1.11-6.x86.gz.sh@857908472@49292197 linuxq3apoint-1.32b-3.x86.run@296843703@30914987...
     private void startTurn(String line, GameStats gameStats) {
         gameStats.addNewGame();
+    }
+
+    //ClientDisconnect: 4
+    private void parseDisconnectAction(String line, GameStats gameStats) {
+        final RoundStats actualRoundStats = gameStats.getActualRoundStats();
+        String playerId = line.substring(line.indexOf(" ") + 1);
+        actualRoundStats.deactivatePlayer(Integer.parseInt(playerId));
     }
 }

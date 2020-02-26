@@ -31,7 +31,6 @@ public class AggregatedGameStats {
         AggregatedGameStats aggregatedGameStats = new AggregatedGameStats();
         fillMaps(gameStat, aggregatedGameStats);
         fillOthers(gameStat, aggregatedGameStats);
-        sortMaps(aggregatedGameStats);
         return aggregatedGameStats;
     }
 
@@ -92,9 +91,11 @@ public class AggregatedGameStats {
                 aggregatedGameStats.playerNameSuicidesMapDesc.compute(playerName, (key, val) -> val == null ? suicides : val + suicides);
 
                 final double perf = Helper.generateKillToDeathRatio(playerStats);
-                aggregatedGameStats.playerNameBestPerformanceMapDesc.compute(playerName, (key, value) -> value == null ? perf : value + perf);
+                aggregatedGameStats.playerNameBestPerformanceMapDesc.compute(playerName, (key, val) -> val == null ? perf : val + perf);
             });
         }
+
+        sortGlobalMaps(aggregatedGameStats);
 
         String bestPlayerName = aggregatedGameStats.playerNameScoreMapDesc.keySet().stream().findFirst().orElse("");
         int bestPlayerId = aggregatedGameStats.playerNameIdMap.getOrDefault(bestPlayerName, -1);
@@ -114,13 +115,11 @@ public class AggregatedGameStats {
                 aggregatedGameStats.bestPlayerKillerDesc.compute(playerName, (key, value) -> value == null ? kills : value + kills);
             });
         }
+
+        sortLocalMaps(aggregatedGameStats);
     }
 
-    private static void fillOthers(GameStats gameStat, AggregatedGameStats aggregatedGameStats) {
-        aggregatedGameStats.amountOfRounds = gameStat.getRoundStats().size();
-    }
-
-    private static void sortMaps(AggregatedGameStats aggregatedGameStats) {
+    private static void sortGlobalMaps(AggregatedGameStats aggregatedGameStats) {
         aggregatedGameStats.playerNameScoreMapDesc = aggregatedGameStats.playerNameScoreMapDesc.entrySet().stream()
                 .sorted(Comparator.comparingInt(score -> -score.getValue()))
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
@@ -140,7 +139,9 @@ public class AggregatedGameStats {
         aggregatedGameStats.playerNameBestPerformanceMapDesc = aggregatedGameStats.playerNameBestPerformanceMapDesc.entrySet().stream()
                 .sorted(Comparator.comparingDouble(perf -> -perf.getValue()))
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+    }
 
+    private static void sortLocalMaps(AggregatedGameStats aggregatedGameStats) {
         aggregatedGameStats.bestPlayerVictimDesc = aggregatedGameStats.bestPlayerVictimDesc.entrySet().stream()
                 .sorted(Comparator.comparingInt(deaths -> -deaths.getValue()))
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
@@ -148,5 +149,9 @@ public class AggregatedGameStats {
         aggregatedGameStats.bestPlayerKillerDesc = aggregatedGameStats.bestPlayerKillerDesc.entrySet().stream()
                 .sorted(Comparator.comparingInt(kills -> -kills.getValue()))
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+    }
+
+    private static void fillOthers(GameStats gameStat, AggregatedGameStats aggregatedGameStats) {
+        aggregatedGameStats.amountOfRounds = gameStat.getRoundStats().size();
     }
 }
