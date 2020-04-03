@@ -132,4 +132,5 @@ buildNumber.properties
 
 # stats log
 quakeServerLog.tmp
+quakeServerLog2.tmp
 install.sh
