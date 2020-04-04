@@ -6,8 +6,11 @@ import com.kruczek.helper.Helper;
 import com.kruczek.model.AggregatedGameStats;
 
 public class BestPerformance implements GlobalQuakeStatsProcessor {
+
     @Override
-    public void processAndFill(AggregatedGameStats gameStat, StringBuilder statsToPrint) {
+    public StringBuilder process(AggregatedGameStats gameStat) {
+        StringBuilder statsToPrint = new StringBuilder();
+
         final Map<String, Double> bestPerformanceMap = gameStat.getPlayerNameBestPerformanceMapDesc();
         final int amountOfRounds = gameStat.getAmountOfRounds();
 
@@ -24,5 +27,7 @@ public class BestPerformance implements GlobalQuakeStatsProcessor {
         } else {
             statsToPrint.append(String.format("%-5.2f\n\n", bestPerformanceRatio));
         }
+
+        return statsToPrint;
     }
 }

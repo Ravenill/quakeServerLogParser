@@ -5,8 +5,11 @@ import java.util.Map;
 import com.kruczek.model.AggregatedGameStats;
 
 public class TopGlobalPlayers implements GlobalQuakeStatsProcessor {
+
     @Override
-    public void processAndFill(AggregatedGameStats gameStat, StringBuilder statsToPrint) {
+    public StringBuilder process(AggregatedGameStats gameStat) {
+        StringBuilder statsToPrint = new StringBuilder();
+
         final int amountOfRounds = gameStat.getAmountOfRounds();
         final Map<String, Integer> scoreMap = gameStat.getPlayerNameScoreMapDesc();
 
@@ -26,5 +29,6 @@ public class TopGlobalPlayers implements GlobalQuakeStatsProcessor {
                 .append(", który/a z zapałem godnym osoby rozmrażającej\nMarylę Rodowicz przed sylwestrem, zgarnął/ęła punktów ")
                 .append(scoreMap.get(thirdBestPlayer)).append(" zamykając dzisiejsze małe kółeczko koniobijców.\n\n");
 
+        return statsToPrint;
     }
 }

@@ -15,7 +15,9 @@ import static java.util.stream.Collectors.toMap;
 public class RoundMainTableProcessor implements RoundQuakeStatsProcessor {
 
     @Override
-    public void processAndFill(RoundStats roundStat, StringBuilder statsToPrint) {
+    public StringBuilder process(RoundStats roundStat) {
+        StringBuilder statsToPrint = new StringBuilder();
+
         LinkedHashMap<Integer, Pair<String, PlayerStats>> sortedRoundMapByPointsDesc = roundStat.getPlayersStats().entrySet().stream()
                 .sorted(Comparator.comparingInt(this::compareByScoreDesc))
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
@@ -67,6 +69,8 @@ public class RoundMainTableProcessor implements RoundQuakeStatsProcessor {
         }
 
         statsToPrint.append("\n");
+
+        return statsToPrint;
     }
 
     private int compareByScoreDesc(Map.Entry<Integer, Pair<String, PlayerStats>> playerMap) {

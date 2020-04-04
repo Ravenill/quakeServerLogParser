@@ -45,12 +45,12 @@ public class StatsGenerator {
         StringBuilder statsToPrint = new StringBuilder("TIME IS OVER!!!\nStats:\n\n");
 
         for (RoundStats roundStat : gameStats.getRoundStats()) {
-            roundProcessors.forEach(roundProcessor -> roundProcessor.processAndFill(roundStat, statsToPrint));
+            roundProcessors.forEach(roundProcessor -> statsToPrint.append(roundProcessor.process(roundStat)));
         }
 
         statsToPrint.append("\n\nGlobal stats:\n\n");
         AggregatedGameStats aggregatedGameStats = AggregatedGameStats.aggregate(gameStats);
-        globalProcessors.forEach(processor -> processor.processAndFill(aggregatedGameStats, statsToPrint));
+        globalProcessors.forEach(processor -> statsToPrint.append(processor.process(aggregatedGameStats)));
 
         return statsToPrint.toString();
     }

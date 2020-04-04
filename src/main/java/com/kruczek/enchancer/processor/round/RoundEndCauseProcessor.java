@@ -5,7 +5,9 @@ import com.kruczek.model.RoundStats;
 public class RoundEndCauseProcessor implements RoundQuakeStatsProcessor {
 
     @Override
-    public void processAndFill(RoundStats roundStat, StringBuilder statsToPrint) {
+    public StringBuilder process(RoundStats roundStat) {
+        StringBuilder statsToPrint = new StringBuilder();
         statsToPrint.append("End cause: ").append(roundStat.getEndCause()).append("\n");
+        return statsToPrint;
     }
 }
